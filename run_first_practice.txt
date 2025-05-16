@@ -1,0 +1,3 @@
+uvicorn first_practice.get_my_info:app --reload
+
+(.venv) PS E:\FastAPI> uvicorn first_practice.get_my_info:app --reload
