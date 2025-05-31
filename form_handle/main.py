@@ -22,6 +22,16 @@ async def create_file(data: Annotated[bytes, File(description="A file read as by
 async def create_upload_file(file: UploadFile | None = None):
     return {"filename": file.filename}
 
+class FormFile(BaseModel):
+    username : Annotated[str, Form()]
+    password : Annotated[str, Form()]
+    image : Annotated[UploadFile, File()]
 
+@app.post('/form/')
+def form_with_file(data: Annotated[FormFile, Form(), File()]):
+    return {
+        'status': 'success',
+        'username' : f'{data.username}'
+    }
 
 
